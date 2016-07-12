@@ -36,12 +36,13 @@ $.turbo =
   # Registers jQuery.Turbolinks by monkey-patching jQuery's
   # `ready` handler. (Internal)
   #
-  # [1] Trigger the stored `ready` events on first load.
+  # [1] No need to trigger the stored `ready` events on first load,
+  #     because this will be done by `turbolinks:load`
   # [2] Override `$(function)` and `$(document).ready(function)` by
   #     registering callbacks under a new event called `turbo:ready`.
   #
   register: ->
-    $(@onLoad) #[1]
+    # $(@onLoad) #[1]
     $.fn.ready = @addCallback #[2]
 
 # Use with Turbolinks.
